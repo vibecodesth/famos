@@ -1,3 +1,57 @@
+'use client';
+
+import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+
+function WaitlistSection() {
+  const searchParams = useSearchParams();
+  const showThanks = searchParams.get('thanks');
+
+  return (
+    <section id="waitlist" className="bg-purple-600 text-white py-20">
+      <div className="container mx-auto px-4 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          Join the Waitlist
+        </h2>
+        <p className="text-xl text-purple-100 mb-12 max-w-2xl mx-auto">
+          Be among the first families to reclaim your sanity. Early access launching soon.
+        </p>
+        {showThanks ? (
+          <div className="max-w-md mx-auto bg-white text-purple-600 rounded-lg p-8">
+            <p className="text-2xl font-bold mb-2">Thank you! You&apos;re on the list 🎉</p>
+            <p className="text-purple-500">We&apos;ll notify you when we launch.</p>
+          </div>
+        ) : (
+          <form action="https://formsubmit.co/akisato888@gmail.com" method="POST" className="max-w-md mx-auto">
+            <input type="hidden" name="_subject" value="🚀 Waitlist Signup - FamOS" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://famos-puce.vercel.app/?thanks=1" />
+            <input type="hidden" name="product" value="famos" />
+            <div className="flex flex-col sm:flex-row gap-4">
+              <input
+                type="email"
+                name="email"
+                placeholder="your@email.com"
+                className="flex-1 px-6 py-4 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-300"
+                required
+              />
+              <button
+                type="submit"
+                className="bg-white text-purple-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-semibold whitespace-nowrap"
+              >
+                Join Waitlist
+              </button>
+            </div>
+          </form>
+        )}
+        <p className="text-sm text-purple-200 mt-4">
+          No spam. Just updates on our launch. Unsubscribe anytime.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
@@ -312,35 +366,16 @@ export default function Home() {
       </section>
 
       {/* Waitlist CTA */}
-      <section id="waitlist" className="bg-purple-600 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Join the Waitlist
-          </h2>
-          <p className="text-xl text-purple-100 mb-12 max-w-2xl mx-auto">
-            Be among the first families to reclaim your sanity. Early access launching soon.
-          </p>
-          <form className="max-w-md mx-auto">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="flex-1 px-6 py-4 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-300"
-                required
-              />
-              <button
-                type="submit"
-                className="bg-white text-purple-600 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-semibold whitespace-nowrap"
-              >
-                Join Waitlist
-              </button>
-            </div>
-          </form>
-          <p className="text-sm text-purple-200 mt-4">
-            No spam. Just updates on our launch. Unsubscribe anytime.
-          </p>
-        </div>
-      </section>
+      <Suspense fallback={
+        <section className="bg-purple-600 text-white py-20">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Join the Waitlist</h2>
+            <p className="text-xl text-purple-100 mb-12">Loading...</p>
+          </div>
+        </section>
+      }>
+        <WaitlistSection />
+      </Suspense>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 py-12">
