@@ -1,0 +1,92 @@
+{
+  "projectName": "FamOS",
+  "branchName": "main",
+  "description": "The Operating System for Modern Families. One dashboard for schedules, school updates, chores, and everything in between.",
+  "techStack": ["Next.js 14", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "NextAuth"],
+  "userStories": [
+    {
+      "id": "FM-001",
+      "title": "Family Account Setup",
+      "description": "As a parent, I can create a family account and invite my partner so we can manage our family together.",
+      "priority": 1,
+      "passes": false,
+      "acceptanceCriteria": [
+        "Sign up with email + password or Google OAuth",
+        "Create a Family with a name",
+        "Invite partner via email",
+        "Partner joins same Family on signup",
+        "Both parents have admin access"
+      ]
+    },
+    {
+      "id": "FM-002",
+      "title": "Add Children Profiles",
+      "description": "As a parent, I can add my children's profiles with basic info so the system knows who we're managing.",
+      "priority": 2,
+      "passes": false,
+      "acceptanceCriteria": [
+        "Add child: name, age, school name",
+        "Color-code per child for calendar",
+        "Free tier: 1 child, Pro: unlimited",
+        "Edit/remove child profiles",
+        "Avatar or emoji for each child"
+      ]
+    },
+    {
+      "id": "FM-003",
+      "title": "Family Dashboard",
+      "description": "As a parent, I see a dashboard showing today's events for every family member at a glance.",
+      "priority": 3,
+      "passes": false,
+      "acceptanceCriteria": [
+        "Today view: all events for all family members",
+        "Color-coded by family member",
+        "Upcoming events (next 48h) section",
+        "Quick-add event button",
+        "Responsive mobile-first design"
+      ]
+    },
+    {
+      "id": "FM-004",
+      "title": "Shared Calendar",
+      "description": "As a parent, I can add events (school, sports, playdates) to a shared family calendar visible to both parents.",
+      "priority": 4,
+      "passes": false,
+      "acceptanceCriteria": [
+        "Add event: title, date/time, child, category",
+        "Categories: school, sports, medical, social, other",
+        "Both parents see all events in real-time",
+        "Edit/delete events",
+        "Weekly and monthly calendar views"
+      ]
+    },
+    {
+      "id": "FM-005",
+      "title": "Chore Assignment",
+      "description": "As a parent, I can create and assign chores to family members with a rotation system.",
+      "priority": 5,
+      "passes": false,
+      "acceptanceCriteria": [
+        "Create chore: name, frequency, assignee",
+        "Auto-rotation option (weekly rotate)",
+        "Mark chore as done",
+        "Chore history/streak",
+        "Assign to parent or child"
+      ]
+    },
+    {
+      "id": "FM-006",
+      "title": "Smart Reminders",
+      "description": "As a parent, I get timely reminders for upcoming events, deadlines, and chores.",
+      "priority": 6,
+      "passes": false,
+      "acceptanceCriteria": [
+        "Push notification for events (configurable lead time)",
+        "Morning summary: today's schedule",
+        "Overdue chore reminders",
+        "Permission slip / form deadlines",
+        "Both parents get reminders"
+      ]
+    }
+  ]
+}
